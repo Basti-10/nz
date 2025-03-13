@@ -56,6 +56,9 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         var marker = L.marker([-43.59, 170.14]).addTo(map);
+        marker.bindPopup("<b>Mount Cook</b>").openPopup();
+        circle.bindPopup("I am a circle.");
+        polygon.bindPopup("I am a polygon.");
     </script>
 </body>
 
