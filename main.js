@@ -200,25 +200,35 @@ const STOPS = [
 ];
 
 // Karte initialisieren
-let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
+let map = L.map('map');
 
 // Hintergrund definieren
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
 // loop über Etappen i=0 solange i kleiner der länge des Objects ist wird i+1 gemacht bis es gleich ist dann hört die schleife auf.
 for (let i=0; i<STOPS.length; i++) {
     console.log(i, STOPS[i],STOPS[i].title );
+
     // Marker zeichnen
     let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
-     // Popup definieren und öffnen
+
+     // Popup definieren 
     marker.bindPopup(`
         <h2>${STOPS[i].title}</h2>
         <ul>
             <li>Geog. Breite ${STOPS[i].lat.toFixed(5)}°</li>
             <li>Geog. Länge ${STOPS[i].lng.toFixed(5)}°</li>
         </ul>
-    `).openPopup();
+    `);
+
+    //auf eigene Etappe Blicken und popup öffnen if Schleife innerhalb for Schleife (if Schleife Bedingung user muss Basti-10 sein das er in der Konsole den string ausgibt und map.setview auf und popup öffnet).
+    if (STOPS[i].user == "Basti-10") {
+        console.log("meine Etappe :-)")
+        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom)
+        marker.openPopup();
+    }
 }
 
