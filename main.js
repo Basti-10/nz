@@ -6,6 +6,15 @@ let lng = 170.14;
 let zoom = 13;
 let lat = -43.59;
 
+let stop = {
+    title: "Mount Cook",
+    nr: 26,
+    user: "Basti-10",
+    zoom: 13,
+    lat: -43.59,
+    lng: 170.14,
+};
+
 // Karte initialisieren
 let map = L.map('map').setView([lat, lng], zoom);
 
