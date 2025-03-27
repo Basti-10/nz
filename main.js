@@ -19,5 +19,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let marker = L.marker([lat, lng]).addTo(map);
 
  // Popup definieren und öffnen
- marker.bindPopup("<b>Mount Cook</b>").openPopup();
+ marker.bindPopup(`
+    <b>Mount Cook</b>
+    <br> 
+    I am a popup.
+`).openPopup();
 
