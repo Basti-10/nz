@@ -2,10 +2,6 @@
 Skript für die Neuseelandreise
 */
 
-let lng = 170.14;
-let zoom = 13;
-let lat = -43.59;
-
 let stop = {
     title: "Mount Cook",
     nr: 26,
@@ -16,7 +12,7 @@ let stop = {
 };
 
 // Karte initialisieren
-let map = L.map('map').setView([lat, lng], zoom);
+let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
 
 // Hintergrund definieren
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -25,14 +21,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
  // Marker zeichnen
-let marker = L.marker([lat, lng]).addTo(map);
+let marker = L.marker([stop.lat, stop.lng]).addTo(map);
 
  // Popup definieren und öffnen
  marker.bindPopup(`
-    <h2>Mount Cook</h2>
+    <h2>${stop.title}</h2>
     <ul>
-        <li>Geog. Breite ${lat.toFixed(5)}°</li>
-        <li>Geog. Länge ${lng.toFixed(5)}°</li>
+        <li>Geog. Breite ${stop.lat.toFixed(5)}°</li>
+        <li>Geog. Länge ${stop.lng.toFixed(5)}°</li>
     </ul>
 `).openPopup();
 
