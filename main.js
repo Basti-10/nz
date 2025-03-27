@@ -20,8 +20,10 @@ let marker = L.marker([lat, lng]).addTo(map);
 
  // Popup definieren und öffnen
  marker.bindPopup(`
-    <b>Mount Cook</b>
-    <br> 
-    I am a popup at ${lat.toFixed(5)} / ${lng.toFixed(5)}.
+    <h2>Mount Cook</h2>
+    <ul>
+        <li>Geog. Breite ${lat.toFixed(5)}°</li>
+        <li>Geog. Länge ${lng.toFixed(5)}°</li>
+    </ul>
 `).openPopup();
 
