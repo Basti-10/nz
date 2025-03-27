@@ -210,7 +210,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // loop über Etappen i=0 solange i kleiner der länge des Objects ist wird i+1 gemacht bis es gleich ist dann hört die schleife auf.
 for (let i=0; i<STOPS.length; i++) {
-    console.log(i, STOPS[i],STOPS[i].title );
 
     // Marker zeichnen
     let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
@@ -226,9 +225,26 @@ for (let i=0; i<STOPS.length; i++) {
 
     //auf eigene Etappe Blicken und popup öffnen if Schleife innerhalb for Schleife (if Schleife Bedingung user muss Basti-10 sein das er in der Konsole den string ausgibt und map.setview auf und popup öffnet).
     if (STOPS[i].user == "Basti-10") {
-        console.log("meine Etappe :-)")
-        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom)
+        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
         marker.openPopup();
     }
+
+    // Pulldownmenü befüllen 
+    let option = document.createElement("option");
+    option.value = STOPS[i].user;
+    option.text = STOPS[i].title;
+    // Pulldown auf eigene Etappe setzten
+    if (STOPS[i].user == "Basti-10") {
+        option.selected = true;
+    }
+    document.querySelector("#pulldown select").appendChild(option);
+}
+
+// auf Änderungen beim Pulldown reagieren
+document.querySelector("#pulldown select").onchange = function(evt) {
+    let url = `https://${evt.target.value}.github.io/nz`;
+    //console.log(url);
+    //console.log(evt.target.value);
+    window.location = url; 
 }
 
